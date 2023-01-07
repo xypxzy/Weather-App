@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #2399d2;
+}
+
+.container {
+    font-family: 'Oswald', sans-serif;
+
+}
+
+.weatherContent {
+    background-color: #fff;
+    border-radius: 5px;
+    min-width: 280px;
+    min-height: 190px;
+}
+
+.contentText {
+    font-size: 18px;
+    font-weight: 600;
+    color: #3ea7da;
+    padding: 10px 20px 5px 20px;
+}
+
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(201, 199, 199, 0.62);
+    margin: 3px 0;
+}
+
+.inputCityName {
+    display: flex;
+    justify-content: center;
+}
+
+input[type=text] {
+    width: 200px;
+    border: 1px solid rgba(201, 199, 199, 0.62);
+    border-radius: 5px;
+    padding: 7px 10px;
+    margin: 15px 20px 5px 20px;
+    transition: ease-in-out, width .35s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 240px;
+    border: 1px solid rgba(105, 103, 103, 0.62);
+    outline: none;
+}
+input[value] {
+    color: #a8a8ab;
+}
+
+.betweenLine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.betweenLine .line {
+    margin-top: 7px;
+    border-radius: 10px;
+}
+
+.betweenLine p {
+    padding: 0 15px;
+}
+
+
+.locationBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.locationBtn button {
+    width: 200px;
+    border: none;
+    background-color: rgba(35, 114, 250, 0.8);
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 7px 10px;
+    margin: 5px 20px 15px 20px;
+    cursor: pointer;
+}
+
+.locationBtn button:hover {
+    background-color: rgba(64, 114, 210, 0.91);
+    color: #efefef;
+    transition: 0.2s ease-in;
+}
+
+.hidden {
+    display: none;
+}
+
+/*Weather content when open*/
+
+.weatherContentWindow {
+    background-color: #fff;
+    border-radius: 5px;
+    min-width: 280px;
+    min-height: 400px;
+}
+
+
