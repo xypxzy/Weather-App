@@ -3,7 +3,6 @@
 const container = document.querySelector('.container');
 const weatherContent = document.querySelector('.weatherContent');
 
-
 let weather = {
     'apiKeys': '4e0f733bcb83269e7da9165f48542178',
     fetchWeather: function (city) {
@@ -14,13 +13,21 @@ let weather = {
                 this.displayWeather(data)
             })
     },
+    fetchWeatherWithCoords: function (lat, lng) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${this.apiKeys}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                this.displayWeather(data)
+            })
+    }
+    ,
     displayWeather: function (data) {
         const {name} = data;
         const {country} = data.sys;
         const {icon, description} = data.weather[0];
         const {temp, humidity} = data.main;
         const {speed} = data.wind;
-        console.log(name, icon, description, temp, humidity, speed, country)
 
         weatherContent.classList.add('hidden')
 
@@ -57,16 +64,14 @@ let weather = {
         container.insertAdjacentHTML('beforeend', html)
         document.querySelector('.icon').src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
-        document.querySelector('.backBtn').addEventListener('click', arrowBackBtn);
+        /*Button Arrow Back*/
+        document.querySelector('.backBtn').addEventListener('click', () => {
+            weatherContent.classList.remove('hidden');
+            document.querySelector('.weatherContentWindow').classList.add('hidden');
+            location.reload()                                   //Нужна доработка. При втором вызове не отображается иконка и Перестает работать функционал
+        });
 
     }
-}
-
-/*Button Arrow Back*/
-
-function arrowBackBtn(event) {
-    document.querySelector('.weatherContentWindow').classList.add('hidden');
-    weatherContent.classList.remove('hidden');
 }
 
 /*Capitalizing every word in the string*/
@@ -77,8 +82,6 @@ function capitalize(str) {
 
 /*Clear input value*/
 
-let city;
-
 const input = document.querySelector('.inputCity');
 input.addEventListener('click', (e) => {
     input.value = '';
@@ -86,9 +89,22 @@ input.addEventListener('click', (e) => {
 
 input.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
-        console.log(input.value)
-        city = input.value;
-        weather.fetchWeather(city)
+        weather.fetchWeather(input.value)
         input.value = ''
     }
 })
+
+/*Geolocation Button*/
+
+const locationBtn = document.querySelector('.locationBtn');
+locationBtn.addEventListener('click', (e) => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+})
+
+function showPosition(position) {
+        weather.fetchWeatherWithCoords(position.coords.latitude, position.coords.longitude)
+}
