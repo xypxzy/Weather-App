@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -60,6 +60,7 @@ input[type=text]:focus {
     border: 1px solid rgba(105, 103, 103, 0.62);
     outline: none;
 }
+
 input[value] {
     color: #a8a8ab;
 }
@@ -107,15 +108,76 @@ input[value] {
 
 .hidden {
     display: none;
+
 }
 
+/*After Search City*/
 /*Weather content when open*/
 
 .weatherContentWindow {
     background-color: #fff;
     border-radius: 5px;
     min-width: 280px;
-    min-height: 400px;
+    min-height: 310px;
+    transition: 0.5s ease-in-out;
 }
+
+.headerBlock {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 12px 10px;
+}
+
+.headerBlock .contentText {
+    padding: 0 5px;
+}
+
+.headerBlock .material-symbols-outlined {
+    color: #3ea7da;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.innerBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 5px;
+    font-weight: 400;
+}
+
+.temperature {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+
+.floorBlock {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 10px;
+}
+
+.speedWind {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.humidity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+
+
+
 
 
